@@ -1,0 +1,56 @@
+.encabezado{
+	align-content: center;
+	width: auto;
+	margin: 0 auto;
+	text-align: center;
+}
+
+h1{
+	display: inline-block;
+	font-family: Arial;
+	font-size: 4em;
+	color: white;
+	background-color: darkblue;
+	border:solid lightblue 10px;
+	padding: 5px;
+	margin-top: 10px;
+}
+
+#logo{
+	float: right;
+}
+
+.cuerpo{
+	clear: both;
+	font-family: sans-serif;
+}
+
+nav{
+	background: darkblue;
+	text-align: center;
+	height: 35px;
+}
+
+.cuerpo nav a{
+	color: white;
+	margin: 10px;
+	padding: 20px 50px;
+	text-decoration: none;
+}
+
+th, td, table{
+	border: 1px solid black;
+}
+
+thead{
+	color: blue;
+	background-color: lightgrey;
+}
+
+
+.pie{
+	font-family: Arial;
+	font-size: 14;
+	float: right;
+
+}
