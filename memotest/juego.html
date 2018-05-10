@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MemoTest</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <h1>MemoTest</h1>
+		<button id="btn-reset" type="button" class="button-rst oculto">Partida Nueva</button>
+		<div id="botonera">
+			<label for="input-time">Tiempo (segundos): </label>
+			<input id="input-time" type="number" min="0" max="10">
+			<label for="input-prob">Probabilidad de marca (%): </label>
+			<input id="input-prob" type="number" min="1" max="100">
+			<input id="btn-comenzar" type="submit" value="Comenzar">
+		</div>
+		<p id="time" class="time"></p>
+
+		<select id="seleccionar" name="Selecionar" class="oculto">
+			<option value="0">Selecionar uno</option>
+			<option value="1">Casillero 1</option>
+			<option value="2">Casillero 2</option>
+			<option value="3">Casillero 3</option>
+			<option value="4">Casillero 4</option>
+			<option value="5">Casillero 5</option>
+			<option value="6">Casillero 6</option>
+			<option value="7">Casillero 7</option>
+			<option value="8">Casillero 8</option>
+		</select>
+
+		<ol id="tablero" class="oculto">
+			<li> <img id="casillero1" src="images/comun.jpg" alt="Casillero 1"> </li>
+			<li> <img id="casillero2" src="images/comun.jpg" alt="Casillero 2"> </li>
+			<li> <img id="casillero3" src="images/comun.jpg" alt="Casillero 3"> </li>
+			<li> <img id="casillero4" src="images/comun.jpg" alt="Casillero 4"> </li>
+			<li> <img id="casillero5" src="images/comun.jpg" alt="Casillero 5"> </li>
+			<li> <img id="casillero6" src="images/comun.jpg" alt="Casillero 6"> </li>
+			<li> <img id="casillero7" src="images/comun.jpg" alt="Casillero 7"> </li>
+			<li> <img id="casillero8" src="images/comun.jpg" alt="Casillero 8"> </li>
+		</ol>
+		<p id="mensaje-falla" class="mensaje-falla oculto">Fallaste!</p>
+		<div class="clear"></div>
+		
+		<div class="resultado">
+			<p>Aciertos</p>
+			<p id="cant-aciertos" class="texto-result">0</p>
+		</div>
+		<div class="resultado">
+			<p>Errores</p>
+			<p id="cant-errores" class="texto-result">0</p>
+		</div>
+		<div class="resultado">
+			<p>Aciertos Totales</p>
+			<p id="cant-aciertos-totales" class="texto-result">0</p>
+		</div>
+		<div class="resultado">
+			<p>Errores Totales</p>
+			<p id="cant-errores-totales" class="texto-result">0</p>
+		</div>
+
+        <script type="text/javascript" src="javascript/script.js"></script>
+    </body>
+</html>

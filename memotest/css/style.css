@@ -1,0 +1,52 @@
+*{
+	margin: 0;
+}
+
+h1{
+	color: blue;
+	margin: 2%;
+	text-align: center;
+}
+
+.oculto{
+	visibility: hidden;
+}
+
+input, .resultado{
+	margin-right: 2%;
+}
+
+.time, .texto-result{
+	text-align:center;
+	font-size: 2em;
+}
+
+select, .button-rst{
+	margin-left: 2%;
+}
+
+select{
+	float:left;
+	margin-right: 20%;
+}
+
+ol{
+	float: left;
+	width: 30%;
+}
+
+ol, li, .resultado{
+	display:inline-block;
+}
+
+.mensaje-falla{
+	float:left;
+	margin: 5% 10%;
+	background-color: red;
+	color: white;
+	font-size: 2em;
+}
+
+.clear{
+	clear:both;
+}
