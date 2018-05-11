@@ -13,7 +13,7 @@ let erroresTotales = 0;
 let descarte = [];
 let ganadas = 0;
 let time = 3; // 3 segundos por defecto
-let probMarca = 50; // 50% por defecto
+let probMarca = 0.50; // 50% por defecto
 
 // Funciones
 function empezarJuego() {
@@ -39,6 +39,7 @@ function empezarJuego() {
 }
 
 function crearTablero() {
+	alert(probMarca);
     for (let i = 1; i <= casillas.length; i++) {
         if (i === 1 || Math.random() < probMarca) {
             document.getElementById('casillero' + i).src = 'images/marcada.jpg';
@@ -82,11 +83,8 @@ function darVuelta(selected) {
 			errores ++;
 			erroresTotales ++;
 			descarte.push(selected);
-			let mensaje = document.getElementById('mensaje-falla');
-			//visible(mensaje);
 			//setTimeout(function() {
 			//	document.getElementById('casillero' + selected).src = 'images/casilla.png';
-			//	ocultar(mensaje);
 			//},500);
 		} else {
             // alert('Casillero ' + selected + ' ya seleccionado.');
@@ -139,24 +137,25 @@ function resetVariables() { // Vuelve a cero los resultados de la partida ganada
 
 // Eventos
 btnComenzar.addEventListener('click', function () { // Funcion que ejecuta al presionar el boton "Comenzar"
-	time = document.getElementById('input-time').value;
-	if (time == 0) { // Puede ser Undifined
-		alert('Ingresar tiempo!');
+	let inputTime = document.getElementById('input-time').value;
+	if (inputTime.length !== 0) {
+		time = inputTime;
+	}
+	let inputProb = document.getElementById('input-prob').value;
+	if (inputProb.length !== 0) {
+		probMarca = inputProb / 100;
+	}
+	if (probMarca >= 0 && probMarca <= 1) {
+		let botonera = document.getElementById('botonera');
+		ocultar(botonera);
+		empezarJuego();
 	} else {
-		probMarca = document.getElementById('input-prob').value / 100;
-		if (probMarca > 0 && probMarca <= 1) {
-			let botonera = document.getElementById('botonera');
-			ocultar(botonera);
-			empezarJuego();
-		}
-		else {
-			alert('Ingrese una probabilidad entre 1 y 100');
-		}
+		alert('Ingrese una probabilidad entre 1 y 100');
 	}
 });
 
 seleccionar.addEventListener('change', function () {
-    let selected = this.selectedIndex;
+    let selected = seleccionar.selectedIndex;
     if (selected !== 0) {
         elegir(selected);
     }

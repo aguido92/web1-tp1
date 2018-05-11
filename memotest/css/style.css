@@ -27,16 +27,21 @@ select, .button-rst{
 
 select{
 	float:left;
-	margin-right: 20%;
+	margin-right: 5%;
 }
 
 ol{
 	float: left;
-	width: 30%;
+	width: 60%;
 }
 
-ol, li, .resultado{
+ol, li{
 	display:inline-block;
+}
+
+.resultado div{
+	display:inline-block;
+	margin-right: 10px;
 }
 
 .mensaje-falla{
