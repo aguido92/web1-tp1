@@ -16,11 +16,6 @@ h1{
 	margin-top: 10px;
 }
 
-.log-guarani{
-    float: left;
-    width: 20px;
-}
-
 #logo{
 	float: right;
 }
@@ -60,9 +55,8 @@ thead{
 	background-color: lightgrey;
 }
 
-
-.pie{
+.pie h4{
 	font-family: Arial;
-	font-size: 14;
-	float: right;
+	text-align: right;
+	
 }
