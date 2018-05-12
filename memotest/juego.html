@@ -30,34 +30,39 @@
 
 		
 		<ol id="tablero" class="oculto">
-			<li> <img id="casillero1" src="images/comun.jpg" alt="Casillero 1" height=150px> </li>
-			<li> <img id="casillero2" src="images/comun.jpg" alt="Casillero 2" height=150px> </li>
-			<li> <img id="casillero3" src="images/comun.jpg" alt="Casillero 3" height=150px> </li>
-			<li> <img id="casillero4" src="images/comun.jpg" alt="Casillero 4" height=150px> </li>
-			<li> <img id="casillero5" src="images/comun.jpg" alt="Casillero 5" height=150px> </li>
-			<li> <img id="casillero6" src="images/comun.jpg" alt="Casillero 6" height=150px> </li>
-			<li> <img id="casillero7" src="images/comun.jpg" alt="Casillero 7" height=150px> </li>
-			<li> <img id="casillero8" src="images/comun.jpg" alt="Casillero 8" height=150px> </li>
+			<li> <img id="casillero1" src="images/comun.jpg" alt="Casillero 1" class="tamanioImagen"> </li>
+			<li> <img id="casillero2" src="images/comun.jpg" alt="Casillero 2" class="tamanioImagen"> </li>
+			<li> <img id="casillero3" src="images/comun.jpg" alt="Casillero 3" class="tamanioImagen"> </li>
+			<li> <img id="casillero4" src="images/comun.jpg" alt="Casillero 4" class="tamanioImagen"> </li>
+			<li> <img id="casillero5" src="images/comun.jpg" alt="Casillero 5" class="tamanioImagen"> </li>
+			<li> <img id="casillero6" src="images/comun.jpg" alt="Casillero 6" class="tamanioImagen"> </li>
+			<li> <img id="casillero7" src="images/comun.jpg" alt="Casillero 7" class="tamanioImagen"> </li>
+			<li> <img id="casillero8" src="images/comun.jpg" alt="Casillero 8" class="tamanioImagen"> </li>
 		</ol>
 
 		<div class="resultado">
-			<div>
-				<p>Aciertos</p>
-				<p id="cant-aciertos" class="texto-result">0</p>
-			</div>
-			<div>
-				<p>Errores</p>
-				<p id="cant-errores" class="texto-result">0</p>
-			</div>
-			<div>
-				<p>Aciertos Totales</p>
-				<p id="cant-aciertos-totales" class="texto-result">0</p>
-			</div>
-			<div>
-				<p>Errores Totales</p>
-				<p id="cant-errores-totales" class="texto-result">0</p>
-			</div>
-		</div>
+			<table id="tablaPartidas" class="centrada">
+				<thead>
+					<th>Partida</th>
+					<th>Aciertos</th>
+					<th>Errores</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Partida 1</td>
+	                    <td id="cant-aciertos">0</td>
+	                    <td id="cant-errores">0</td>
+					</tr>
+				</tbody>
+				<tfoot class="texto-result">
+						<td>Totales </td>
+						<td id="cant-aciertos-totales">0 </td>
+						<td id="cant-errores-totales">0</td>
+					</tr>
+				</tfoot>
+
+			</table>
+
 
         <script type="text/javascript" src="javascript/script.js"></script>
     </body>

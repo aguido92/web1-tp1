@@ -14,6 +14,9 @@ let descarte = [];
 let ganadas = 0;
 let time = 3; // 3 segundos por defecto
 let probMarca = 0.50; // 50% por defecto
+////////////////////
+let tabla = document.getElementById("tablaPartidas");
+let filaActual = 1;
 
 // Funciones
 function empezarJuego() {
@@ -100,13 +103,29 @@ function elegir(selected) {
     }
 }
 
+/**************************/
+
+
 function actualizarResultados() {
-    document.getElementById('cant-aciertos').innerHTML = aciertos;
+
+	tabla.rows[filaActual].cells[1].innerText = aciertos;
+	tabla.rows[filaActual].cells[2].innerText = errores;
     document.getElementById('cant-aciertos-totales').innerHTML = aciertosTotales;
-    document.getElementById('cant-errores').innerHTML = errores;
     document.getElementById('cant-errores-totales').innerHTML = erroresTotales;
 }
 
+function crearFilaTabla(){
+	filaActual = filaActual+1;
+	let fila = tabla.insertRow(filaActual);
+	let columna0 = fila.insertCell(0);
+	let columna1 = fila.insertCell(1);
+	let columna2 = fila.insertCell(2);
+	columna0.innerHTML = "Partida " + filaActual;
+	columna1.innerHTML = 0;
+	columna2.innerHTML = 0;
+}
+
+/******************************/
 function finalizar() {
     ganadas ++;
 	ocultar(seleccionar);
@@ -115,14 +134,6 @@ function finalizar() {
 		if (ganadas % 3 === 0) {
 			alert('Felicitaciones! Llevas ganado ' + ganadas + ' veces');
 		}
-/*		casillas = console.log(document.querySelectorAll('img'));
-		for (let i = 1; i < casillas.length; i++) {
-		console.log(casillas[i].src);
-			if (casillas[i].src === 'images/casilla.png'){
-				casillas[i].src = 'images/comun.jpg';
-			}
-		}
-	*/
 	},500);
 }
 
@@ -133,6 +144,7 @@ function resetVariables() { // Vuelve a cero los resultados de la partida ganada
     errores = 0;
     seleccionar.selectedIndex = 0;
 }
+
 
 
 // Eventos
@@ -167,5 +179,7 @@ btnReset.addEventListener('click', function(){
 	ocultar(seleccionar);
 	visible(botonera);
 	resetVariables();
-	actualizarResultados();
+	crearFilaTabla();
+	//actualizarResultados();
+	//crear nuevo td(), filaActual++;
 });

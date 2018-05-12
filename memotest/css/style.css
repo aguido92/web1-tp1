@@ -5,7 +5,6 @@
 h1{
 	color: blue;
 	margin: 2%;
-	text-align: center;
 }
 
 .oculto{
@@ -16,9 +15,16 @@ input, .resultado{
 	margin-right: 2%;
 }
 
-.time, .texto-result{
-	text-align:center;
+.time{
 	font-size: 2em;
+}
+
+.texto-result{
+	color: red;
+}
+
+h1, .time, .texto-result, .centrada{
+	text-align:center;
 }
 
 select, .button-rst{
@@ -35,12 +41,11 @@ ol{
 	width: 60%;
 }
 
-ol, li{
+.resultado div, ol, li{
 	display:inline-block;
 }
 
 .resultado div{
-	display:inline-block;
 	margin-right: 10px;
 }
 
@@ -54,4 +59,8 @@ ol, li{
 
 .clear{
 	clear:both;
+}
+
+.tamanioImagen{
+	height: 150px;
 }
