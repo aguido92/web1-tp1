@@ -12,7 +12,7 @@ let errores = 0;
 let erroresTotales = 0;
 let descarte = [];
 let ganadas = 0;
-let time = 3; // 3 segundos por defecto
+let tiempo = 3; // 3 segundos por defecto
 let probMarca = 0.50; // 50% por defecto
 ////////////////////
 let tabla = document.getElementById("tablaPartidas");
@@ -22,23 +22,23 @@ let filaActual = 1;
 function empezarJuego() {
 	crearTablero();
 	visible(tablero);
-	let pTime = document.getElementById('time');
-	let regresivo = time;
-	pTime.innerHTML = regresivo;
+	let pTiempo = document.getElementById('tiempo');
+	let regresivo = tiempo;
+	pTiempo.innerHTML = regresivo;
 	let timer = setInterval(function(){
 		regresivo--;
-		pTime.innerHTML = regresivo;
+		pTiempo.innerHTML = regresivo;
 	},1000);
 	setTimeout(function() {
 		clearInterval(timer);
-		pTime.innerHTML = '';
+		pTiempo.innerHTML = '';
 		ocultarMarcas();
 		visible(btnReset);
 		visible(seleccionar);
 		if (marcadas.length === 0) {
 			finalizar();
 		}
-	},time * 1000);
+	},tiempo * 1000);
 }
 
 function crearTablero() {
@@ -58,7 +58,7 @@ function ocultarMarcas() {
     //    document.getElementById('casillero' + i).src = 'images/casilla.png';
     //}
 	for (let img of casillas) {
-        img.src = 'images/casilla.png';
+        img.src = 'images/casilla.jpg';
     }
 }
 
@@ -149,13 +149,13 @@ function resetVariables() { // Vuelve a cero los resultados de la partida ganada
 
 // Eventos
 btnComenzar.addEventListener('click', function () { // Funcion que ejecuta al presionar el boton "Comenzar"
-	let inputTime = document.getElementById('input-time').value;
-	if (inputTime.length !== 0) {
-		time = inputTime;
+	let inputTiempo = document.getElementById('input-tiempo').value;
+	if (inputTiempo.length !== 0) {
+		tiempo = inputTiempo;
 	}
-	let inputProb = document.getElementById('input-prob').value;
-	if (inputProb.length !== 0) {
-		probMarca = inputProb / 100;
+	let inputProbabilibdad = document.getElementById('input-probabilidad').value;
+	if (inputProbabilibdad.length !== 0) {
+		probMarca = inputProbabilibdad / 100;
 	}
 	if (probMarca >= 0 && probMarca <= 1) {
 		let botonera = document.getElementById('botonera');

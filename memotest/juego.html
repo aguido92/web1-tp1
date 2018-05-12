@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
+    	<meta charset="utf-8">
         <title>MemoTest</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <h1>MemoTest</h1>
 		<div id="botonera">
-			<label for="input-time">Tiempo (segundos): </label>
-			<input id="input-time" type="number" min="0" max="10">
-			<label for="input-prob">Probabilidad de marca (%): </label>
-			<input id="input-prob" type="number" min="1" max="100">
+			<label for="input-tiempo">Tiempo (segundos): </label>
+			<input id="input-tiempo" type="number" min="0" max="10">
+			<label for="input-probabilidad">Probabilidad de marca (%): </label>
+			<input id="input-probabilidad" type="number" min="1" max="100">
 			<input id="btn-comenzar" type="submit" value="Comenzar">
 		</div>
-		<button id="btn-reset" type="button" class="button-rst oculto">Partida Nueva</button>
-		<p id="time" class="time"></p>
+		<button id="btn-reset" type="button" class="button-reset oculto">Partida Nueva</button>
+		<p id="tiempo" class="tiempo"></p>
 
 		<select id="seleccionar" name="Selecionar" class="oculto">
 			<option value="0">Selecionar uno</option>
@@ -60,9 +61,9 @@
 						<td id="cant-errores-totales">0</td>
 					</tr>
 				</tfoot>
-
 			</table>
-
+		</div>
+		<div class="limpiar"></div>
 
         <script type="text/javascript" src="javascript/script.js"></script>
     </body>
