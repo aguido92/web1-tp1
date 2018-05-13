@@ -41,7 +41,7 @@ function empezarJuego() {
         ocultarMarcas();
         visible(btnReset);
         visible(seleccionar);
-        if (!arrCasilleros.includes('images/sin-marcar.jpg')) {
+        if (!arrCasilleros.includes('images/marcada.jpg')) {
             finalizar();
         }
     }, tiempo * 1000);
@@ -94,6 +94,7 @@ function darVuelta(selected) {
             erroresTotales++;
         }
         visitado[selected-1] = true;
+		console.log(visitado);
     }
 }
 
