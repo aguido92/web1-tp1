@@ -1,0 +1,50 @@
+
+.azul{
+	color: blue;
+}
+
+.oculto{
+	visibility: hidden;
+}
+
+input{
+	margin-right: 2%;
+}
+
+.botones-izq{
+    float: left;
+    margin: 2%;
+}
+
+.aumentado{
+	font-size: 5em;
+}
+
+.negro{
+	color: black;
+}
+
+.rojo{
+	color: red;
+}
+
+.texto-centrado{
+	text-align:center;
+}
+
+.tablero{
+	float: left;
+	width: 50%;
+}
+
+.tablero li{
+	display:inline-block;
+}
+
+.limpiar{
+	clear:both;
+}
+
+.casillero{
+	height: 150px;
+}
