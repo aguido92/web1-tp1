@@ -66,7 +66,7 @@ function crearTablero() {
 
 /*	Deja "boca abajo" las cartas, para que comience a jugar el usuario.	*/
 function ocultarMarcas() {
-    for (let img of document.querySelectorAll('.casillero')) {
+    for (let img of document.querySelectorAll('img')) {
         img.src = 'images/dada-vuelta.jpg';
     }
 }
@@ -124,7 +124,7 @@ function crearFilaTabla() {
 	fila.insertCell(2).innerHTML = 0;
 }
 
-/*	Actualiza la cantidad de partidas finalizadas, y felicita al usuario cada 3 partidas concecutivas.	*/
+/*	Actualiza la cantidad de partidas finalizadas, y felicita al usuario cada 3 partidas concecutivas.	Al ganar muestra los casilleros en blanco*/
 function finalizar() {
     ganadas++;
     ocultar(seleccionar);
