@@ -94,7 +94,6 @@ function darVuelta(selected) {
             erroresTotales++;
         }
         visitado[selected-1] = true;
-		console.log(visitado);
     }
 }
 
