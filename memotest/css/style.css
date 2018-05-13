@@ -16,7 +16,7 @@ input, .resultado{
 	font-size: 2em;
 }
 
-.texto-result{
+tfoot{
 	color: red;
 }
 
@@ -53,4 +53,8 @@ ol{
 
 .tamanioImagen{
 	height: 150px;
+}
+
+tbody{
+	color: black;
 }
