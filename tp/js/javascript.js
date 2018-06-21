@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", function(){
 	/*	Esta función realiza el PARTIAL RENDER que carga en la sección "cuerpo" del index, el home de la página.	*/
 	function loadHome(event){
 		event.preventDefault();
-		let container = document.querySelector(".cuerpo");
-		container.innerHTML = "<h2>Cargando...</h2>";
+		let containerIndex = document.querySelector(".cuerpo");
+		containerIndex.innerHTML = "<h2>Cargando...</h2>";
 		fetch("home.html").then(
 			function(response){
 		      		response.text().then(t  => 
-						container.innerHTML = t)
+						containerIndex.innerHTML = t)
 					.catch(error => console.log("Error en loadHome, text(): "+error))
 					})
 			.catch(error => console.log("Error en loadHome: "+error))
@@ -38,14 +38,14 @@ document.addEventListener("DOMContentLoaded", function(){
 			function(response){
 	      		response.text().then(t  => {
 				container.innerHTML = t;
-				container.querySelector("#timer").addEventListener("click", comenzarActualizaciones);
-				container.querySelector("#stopTimer").addEventListener("click", detenerActualizaciones);
-				container.querySelector("#js-getId").addEventListener("click", eventGetOne);
-				container.querySelector("#js-get").addEventListener("click", eventGet);
-				container.querySelector("#js-delete-all").addEventListener("click", eventDeleteAll);
-				container.querySelector("#name").addEventListener("keyup", filtrarPorNombre);
-				container.querySelector("#js-create").addEventListener("click", eventCreate);
-				container.querySelector("#js-create-n").addEventListener("click", eventCreateCount);
+				container.querySelector(".js-set-timer").addEventListener("click", comenzarActualizaciones);
+				container.querySelector(".js-stop-timer").addEventListener("click", detenerActualizaciones);
+				container.querySelector(".js-get-id").addEventListener("click", eventGetOne);
+				container.querySelector(".js-get").addEventListener("click", eventGet);
+				container.querySelector(".js-delete-all").addEventListener("click", eventDeleteAll);
+				container.querySelector(".js-filtro-nombre").addEventListener("keyup", filtrarPorNombre);
+				container.querySelector(".js-create").addEventListener("click", eventCreate);
+				container.querySelector(".js-create-n").addEventListener("click", eventCreateCount);
 
 				get();
 				})
@@ -87,10 +87,10 @@ document.addEventListener("DOMContentLoaded", function(){
 	/*	Esta función cada cierto tiempo (ingresado por el usuario), actualiza la tabla REST para dejarla consistente con la base.	*/
 	function comenzarActualizaciones(event){
 		event.preventDefault();
-		document.querySelector("#timer").classList.toggle('oculto');
-		document.querySelector("#stopTimer").classList.toggle('oculto');
+		document.querySelector(".js-set-timer").classList.toggle('oculto');
+		document.querySelector(".js-stop-timer").classList.toggle('oculto');
 		seguirActualizando = true;
-		tiempoRecarga = parseInt(document.querySelector("#time-refresh").value)*1000;
+		tiempoRecarga = parseInt(document.querySelector(".js-time-refresh").value)*1000;
 		console.log(tiempoRecarga);
 		let timer = setInterval(function() {
 			if (seguirActualizando)
@@ -107,8 +107,8 @@ document.addEventListener("DOMContentLoaded", function(){
 	/*	Esta función detiene el AUTO-ACTUALIZAR de la tabla.	*/
 	function detenerActualizaciones(event){
 		event.preventDefault();
-		document.querySelector("#timer").classList.toggle('oculto');
-		document.querySelector("#stopTimer").classList.toggle('oculto');
+		document.querySelector(".js-set-timer").classList.toggle('oculto');
+		document.querySelector(".js-stop-timer").classList.toggle('oculto');
 		seguirActualizando = false;
 	}
 
@@ -140,9 +140,9 @@ document.addEventListener("DOMContentLoaded", function(){
 	/*	Llama a crear fila si todos los campos necesarios tienen datos.	*/
 	function eventCreate(e){
 		e.preventDefault();
-		let id = document.querySelector("#id").value;
-		let nombre = document.querySelector("#name").value;
-		let link = document.querySelector("#link").value;
+		let id = document.querySelector(".js-input-id").value;
+		let nombre = document.querySelector(".js-filtro-nombre").value;
+		let link = document.querySelector(".js-link").value;
 		if (id && nombre && link){
 			create(id, nombre, link);
 			/*get();*/
@@ -154,10 +154,10 @@ document.addEventListener("DOMContentLoaded", function(){
 	/*	Llama varias veces a crear fila si todos los campos necesarios tienen datos.	*/
 	function eventCreateCount(e){
 		e.preventDefault();
-		let id = document.querySelector("#id").value;
-		let nombre = document.querySelector("#name").value;
-		let link = document.querySelector("#link").value;
-		let cantidad = document.querySelector("#count").value;
+		let id = document.querySelector(".js-input-id").value;
+		let nombre = document.querySelector(".js-filtro-nombre").value;
+		let link = document.querySelector(".js-link").value;
+		let cantidad = document.querySelector(".count-create").value;
 		if (id && nombre && link){
 			for (let i = 0; i < cantidad; i++)
 				create(id, nombre, link);
@@ -170,9 +170,9 @@ document.addEventListener("DOMContentLoaded", function(){
 	/*	Llama a actualizar fila si todos los campos necesarios tienen datos.	*/
 	function eventUpdate(e){
 		e.preventDefault();
-		let id = document.querySelector("#id").value;
-		let nombre = document.querySelector("#name").value;
-		let link = document.querySelector("#link").value;
+		let id = document.querySelector(".js-input-id").value;
+		let nombre = document.querySelector(".js-filtro-nombre").value;
+		let link = document.querySelector(".js-link").value;
 		if (id && nombre && link){
 			update(this, id, nombre, link);
 			/*get();*/
@@ -200,11 +200,17 @@ document.addEventListener("DOMContentLoaded", function(){
 	/***			HTTP!!!			***/
 	/*	Esta función realiza el GET HTTP de la tabla completa, utilizando la función mostrar.	*/
 	function get(){
+		let loader = document.createElement("div");
+		loader.classList.add("loader");
+		let tabla = document.querySelector(".table");
+		tabla.appendChild(loader);						// Insercion del div loader 
+
 		let container = document.querySelector("tbody");
 		fetch(url).then(function(r){ 
 			console.log("GET status: " + r.status);
 			r.json()
 				.then(function(json){
+					tabla.removeChild(tabla.lastChild);
 					let cantHijos = container.childNodes.length;
 					for (let i = 0; i < cantHijos; i++) 
 						container.removeChild(container.firstChild);
@@ -230,9 +236,9 @@ document.addEventListener("DOMContentLoaded", function(){
 	/*	Esta función realiza el GET HTTP de una fila de la tabla, utilizando la función mostrar.	*/
 	function getOne(){
 		let container = document.querySelector("tbody");
-		let idCatedra = document.querySelector("#id").value;
+		let idCatedra = document.querySelector(".js-input-id").value;
 		let id = "";
-		for (var i = 0; i < arregloJsons.length; i++) {
+		for (let i = 0; i < arregloJsons.length; i++) {
 			if(arregloJsons[i].thing.id === idCatedra){
 				id = arregloJsons[i]._id;
 			}
@@ -269,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	/*	Esta función realiza el GET HTTP de las filas de la tabla que cumplen con el FILTRO por nombre, utilizando la función mostrar.	*/
 	function filtrarPorNombre(){
 		let container = document.querySelector("tbody");
-		let nombreCatedra = document.querySelector("#name").value;
+		let nombreCatedra = document.querySelector(".js-filtro-nombre").value;
 		let filtrados = [];
 		let count = 0;
 		for (let i = 0; i < arregloJsons.length; i++) {
@@ -359,7 +365,7 @@ document.addEventListener("DOMContentLoaded", function(){
 		contenido.id = propiedad;
 		contenido.nombre = nombre;
 		contenido.link = link;
-		let container = document.querySelector("#resultado");
+		let container = document.querySelector("js-resultado");
 		let cantHijos = container.childNodes.length;
 		let count = 0;
 		if (!cantHijos){
@@ -393,7 +399,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	/*	Esta función realiza el DELETE HTTP de la fila de la página.	*/
 	function del(btn){
 		let urlCompleta = url + btn.id;
-		let container = document.querySelector("#resultado");
+		let container = document.querySelector(".js-resultado");
 		let cantHijos = container.childNodes.length;
 		let count = 0;
 		if (!cantHijos){
@@ -426,7 +432,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	/*	Esta función realiza el UPDATE HTTP de la fila, con el contenido de los inputs de la página.	*/
 	function update(btn, propiedad, nombre, link){
 		let urlCompleta = url + btn.id;
-		let container = document.querySelector("#resultado");
+		let container = document.querySelector("js-resultado");
 		let cantHijos = container.childNodes.length;
 		let count = 0;
 		if (!cantHijos){
