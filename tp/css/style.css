@@ -1,0 +1,113 @@
+header{
+	text-align: center;
+}
+h1{
+	display: inline-block !important;
+	font-family: Arial !important;
+	color: white !important;
+	background-color: darkblue;
+	border:solid lightblue 10px;
+	padding: 5px;
+	margin-top: 10px !important;
+	display: flex;   
+    flex-wrap: nowrap;
+    width: 80%;
+}
+
+form input{
+    margin-bottom: 10px;
+}
+
+.cuerpo{
+	/*clear: both;*/
+	font-family: sans-serif;
+}
+
+th, td, table{
+	border: 1px solid black;
+}
+
+footer h4{
+	/*clear: both;*/
+	font-family: Arial;
+	text-align: right;
+}
+
+.list-group{
+	border: 10px solid blue !important;
+	background-color: lightblue !important;
+}
+
+/* achica el tamaño de la fuente*/
+@media (max-width: 550px){
+	h1{
+		font-size: 1.5em !important;
+	}
+}
+
+/* achica el ancho del logo*/
+.logo{
+	width: 90%;
+}
+@media (min-width: 760px) and (max-width: 991px){
+	.logo{
+		width: 50%;
+	}
+}
+
+.btn-warning{
+	color: white !important;
+}
+button{
+	font-weight: bold !important;
+}
+
+.table thead th{
+	border: 1px solid black !important;	
+}
+
+thead{
+	color: darkblue;
+	background-color: lightblue;
+	text-align: center;
+}
+
+/* filas pares fondo gris*/
+tr:nth-child(even){ 
+	background-color: lightgrey;
+}
+
+tr{
+	text-align: center;
+}
+
+.filaResaltada{
+	font-weight: bold !important;
+	color: red !important;	
+}
+
+form{
+	margin-top: 5px;
+}
+
+/* oculta */
+.oculto{
+	display: none;
+}
+
+/* ancho del input de tiempo (porque ocupa 12 columnas)*/
+@media (max-width: 550px){
+	.inputNumber{
+		width: 35% !important;
+	}
+}
+@media (min-width: 550px){
+	.inputNumber{
+		width: 10% !important;
+	}
+}
+
+/* ancho de los input de números*/
+.col-md-6 .inputNumber{
+	width: 20% !important;
+}
